@@ -1,0 +1,10 @@
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\bin\Debug\Search-The-GP.exe.config
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\bin\Debug\Search-The-GP.exe
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\bin\Debug\Search-The-GP.pdb
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search-The-GP.csproj.AssemblyReference.cache
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.Form1.resources
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.Properties.Resources.resources
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search-The-GP.csproj.GenerateResource.cache
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search-The-GP.csproj.CoreCompileInputs.cache
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search-The-GP.exe
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search-The-GP.pdb
