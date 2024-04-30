@@ -19,20 +19,8 @@ namespace Search_The_GP
             InitializeComponent();
 
             this.StartPosition = FormStartPosition.CenterScreen;
-
-            // Conectăm evenimentele KeyDown și KeyUp
-            this.KeyDown += new KeyEventHandler(Form1_KeyDown);
         }
 
-        // Metoda apelată când o tastă este apăsată
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Verificăm dacă a fost apăsată tasta Escape
-            if (e.KeyCode == Keys.Escape)
-            {
-                Application.Exit();
-            }
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -114,6 +102,7 @@ namespace Search_The_GP
                     return;
                 }
                 password.ForeColor = Color.White;
+                password.PasswordChar = '*';
                 passwordEror.Visible = false;
             }
             catch
@@ -153,5 +142,18 @@ namespace Search_The_GP
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+            this.Hide(); 
+        }
+
     }
 }
