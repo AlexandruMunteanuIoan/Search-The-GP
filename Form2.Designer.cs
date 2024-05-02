@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.typeSelect = new System.Windows.Forms.ComboBox();
             this.typeError = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.phoneError = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.dobError = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.dateOfBirth = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.emailError = new System.Windows.Forms.Label();
@@ -114,17 +114,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1200, 700);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.typeSelect);
             this.panel6.Controls.Add(this.typeError);
             this.panel6.Controls.Add(this.pictureBox5);
-            this.panel6.Controls.Add(this.textBox3);
             this.panel6.Controls.Add(this.label8);
             this.panel6.Location = new System.Drawing.Point(634, 427);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(520, 80);
             this.panel6.TabIndex = 18;
+            // 
+            // typeSelect
+            // 
+            this.typeSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.typeSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.typeSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typeSelect.ForeColor = System.Drawing.Color.Gray;
+            this.typeSelect.FormattingEnabled = true;
+            this.typeSelect.Items.AddRange(new object[] {
+            "Patient",
+            "Family Doctor"});
+            this.typeSelect.Location = new System.Drawing.Point(167, 17);
+            this.typeSelect.Name = "typeSelect";
+            this.typeSelect.Size = new System.Drawing.Size(342, 33);
+            this.typeSelect.TabIndex = 4;
+            this.typeSelect.Text = "Select one";
+            this.typeSelect.SelectedIndexChanged += new System.EventHandler(this.typeSelect_SelectedIndexChanged);
             // 
             // typeError
             // 
@@ -148,19 +166,6 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox3.Location = new System.Drawing.Point(167, 17);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox3.Size = new System.Drawing.Size(345, 23);
-            this.textBox3.TabIndex = 1;
-            this.textBox3.Text = "Password";
             // 
             // label8
             // 
@@ -239,7 +244,7 @@
             // 
             this.panel7.Controls.Add(this.dobError);
             this.panel7.Controls.Add(this.pictureBox6);
-            this.panel7.Controls.Add(this.textBox4);
+            this.panel7.Controls.Add(this.dateOfBirth);
             this.panel7.Controls.Add(this.label10);
             this.panel7.Location = new System.Drawing.Point(634, 341);
             this.panel7.Name = "panel7";
@@ -269,18 +274,20 @@
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
             // 
-            // textBox4
+            // dateOfBirth
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox4.Location = new System.Drawing.Point(167, 17);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox4.Size = new System.Drawing.Size(345, 23);
-            this.textBox4.TabIndex = 1;
-            this.textBox4.Text = "Username";
+            this.dateOfBirth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.dateOfBirth.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateOfBirth.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dateOfBirth.Location = new System.Drawing.Point(167, 17);
+            this.dateOfBirth.Name = "dateOfBirth";
+            this.dateOfBirth.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateOfBirth.Size = new System.Drawing.Size(345, 23);
+            this.dateOfBirth.TabIndex = 1;
+            this.dateOfBirth.Text = "Ex: dd-mm-yyyy";
+            this.dateOfBirth.Click += new System.EventHandler(this.dateOfBirth_Click);
+            this.dateOfBirth.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label10
             // 
@@ -719,7 +726,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label typeError;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label phoneError;
@@ -729,7 +735,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label dobError;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label emailError;
@@ -746,5 +751,7 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.TextBox fname;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox typeSelect;
+        private System.Windows.Forms.TextBox dateOfBirth;
     }
 }

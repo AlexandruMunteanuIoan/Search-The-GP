@@ -45,7 +45,7 @@ namespace Search_The_GP
         private bool IsValidPassword(string password)
         {
             // Expresia regulată pentru a valida parola (exact 8 caractere/cifre)
-            string pattern = @"^[A-Za-z0-9]{8}$";
+            string pattern = @"^[A-Za-z0-9]{8,20}$";
             Regex regex = new Regex(pattern);
             return regex.IsMatch(password);
         }
@@ -53,6 +53,15 @@ namespace Search_The_GP
         private bool IsValidUsername(string username)
         {
             return username.Length >= 4;
+        }
+
+        private bool IsValidDateOfBirth(string dateString)
+        {
+            string format = "dd-mm-yyyy";
+            if (DateTime.TryParseExact(dateString, format, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out _))
+                return true;
+            else
+                return false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -111,6 +120,12 @@ namespace Search_The_GP
                 lname.Focus();
                 return;
             }
+            if( dateOfBirth.Text == "Ex: dd-mm-yyyy" || !IsValidDateOfBirth(dateOfBirth.Text))
+            {
+                dobError.Visible = true;
+                dateOfBirth.Focus();
+                return;
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -166,6 +181,30 @@ namespace Search_The_GP
         private void lname_Click(object sender, EventArgs e)
         {
             lname.SelectAll();
+        }
+
+        private void dateOfBirth_Click(object sender, EventArgs e)
+        {
+            dateOfBirth.SelectAll();
+        }
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dateOfBirth.Text == "")
+                {
+                    dateOfBirth.Text = "Ex: dd-mm-yyyy";
+                    dateOfBirth.ForeColor = Color.Gray;
+                    return;
+                }
+                dateOfBirth.ForeColor = Color.White;
+
+                dobError.Visible = false;
+            }
+            catch
+            {
+
+            }
         }
 
         private void password_TextChanged(object sender, EventArgs e)
@@ -268,6 +307,34 @@ namespace Search_The_GP
             {
 
             }
+        }
+       
+
+        private void typeSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ComboBox comboBox = (ComboBox)sender;
+
+                if (comboBox.SelectedItem == null || comboBox.SelectedItem.ToString() == "Select one")
+                {
+                    comboBox.Text = "Select one";
+                    comboBox.ForeColor = Color.Gray;
+                    return;
+                }
+
+                comboBox.ForeColor = Color.White;
+                typeError.Visible = false;
+            }
+            catch
+            {
+               
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
