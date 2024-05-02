@@ -136,6 +136,15 @@ namespace Search_The_GP
                 password.Focus();
                 return;
             }
+
+            if (username.Text == "AlexandruMunteanu" && password.Text == "AdminMAI")
+            {
+                
+                Form3 form3 = new Form3();
+                form3.Show();
+
+                this.Hide();
+            }
         }
 
         private void usernameEror_Click(object sender, EventArgs e)
