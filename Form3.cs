@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Documents;
 
 namespace Search_The_GP
 {
@@ -20,6 +22,10 @@ namespace Search_The_GP
             contentPatients.Visible = false; 
             contentProfil.Visible = true;
             contentDoctors.Visible = false;
+
+            nrOfAdmin.ReadOnly = true;
+            nrOfDoctors.ReadOnly = true;
+            nrOfPatients.ReadOnly = true;
 
             ToggleEditMode(false);
         }
@@ -43,6 +49,8 @@ namespace Search_The_GP
             contentPatients.Visible = true;
             contentProfil.Visible = false;
             contentDoctors.Visible = false;
+
+            getPatients();
         }
 
         private void btnDoctors_Click(object sender, EventArgs e)
@@ -134,6 +142,34 @@ namespace Search_The_GP
                 // Facem câmpul de parolă invizibil
                 password.UseSystemPasswordChar = true;
             }
+        }
+
+        //Patients
+        private void getPatients()
+        {
+            PatientList[] patientList = new PatientList[20];
+            for (int i = 0; i < patientList.Length; i++)
+            {
+                patientList[i] = new PatientList();
+                patientList[i].Patients = "Munteanu Alexandru";
+                patientList[i].Phone = "+40 738474815";
+                patientList[i].Email = "alexandru.munteanu6@student.usv.ro";
+
+
+                flowLayoutPanel1.Controls.Add(patientList[i]);
+
+            }
+
+            foreach (PatientList patient in patientList)
+            {
+                patient.readClicked += PatientList_ButtonClicked;
+            }
+        }
+
+        private void PatientList_ButtonClicked(object sender, EventArgs e)
+        {
+            // Afișați mesajul atunci când butonul este apăsat
+            MessageBox.Show("Button clicked in PatientList UserControl!");
         }
     }
 }
