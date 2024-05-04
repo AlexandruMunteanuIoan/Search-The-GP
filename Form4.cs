@@ -1,24 +1,30 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Documents;
-using System.Drawing.Text;
+
 
 namespace Search_The_GP
 {
-    public partial class Form3 : Form
+    public partial class Form4 : Form
     {
 
         private bool isEditMode = false;
-        public Form3()
+        Random random = new Random();
+        string[] statuses = { "Accepted", "Rejected", "Pending" };
+
+
+        public Form4()
         {
             InitializeComponent();
-            // Setăm poziția formularului la centrul ecranului
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // Inițializăm vizibilitatea panourilor
-            contentPatients.Visible = false; 
             contentProfil.Visible = true;
             contentDoctors.Visible = false;
             contentRequest.Visible = false;
@@ -26,7 +32,7 @@ namespace Search_The_GP
             ToggleEditMode(false);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -34,27 +40,14 @@ namespace Search_The_GP
         private void btnProfil_Click(object sender, EventArgs e)
         {
             // Schimbăm vizibilitatea panourilor pentru a afișa profilul
-            contentPatients.Visible = false;
             contentProfil.Visible = true;
             contentDoctors.Visible = false;
             contentRequest.Visible = false;
         }
 
-        private void btnPatients_Click(object sender, EventArgs e)
-        {
-            // Schimbăm vizibilitatea panourilor pentru a afișa lista de pacienți
-            contentPatients.Visible = true;
-            contentProfil.Visible = false;
-            contentDoctors.Visible = false;
-            contentRequest.Visible = false;
-
-            getPatients();
-        }
-
         private void btnDoctors_Click(object sender, EventArgs e)
         {
             // Schimbăm vizibilitatea panourilor pentru a afișa lista de medici
-            contentPatients.Visible = false;
             contentProfil.Visible = false;
             contentDoctors.Visible = true;
             contentRequest.Visible = false;
@@ -65,7 +58,6 @@ namespace Search_The_GP
         private void btnRequests_Click(object sender, EventArgs e)
         {
             // Schimbăm vizibilitatea panourilor pentru a afișa lista de medici
-            contentPatients.Visible = false;
             contentProfil.Visible = false;
             contentDoctors.Visible = false;
             contentRequest.Visible = true;
@@ -73,29 +65,23 @@ namespace Search_The_GP
             getRequests();
         }
 
-        private void button2btnEdit_Click(object sender, EventArgs e)
-        {
-            isEditMode = !isEditMode;
-            ToggleEditMode(isEditMode);
-
-        }
         private void ToggleEditMode(bool editMode)
         {
             if (editMode)
             {
-
                 // Activați editarea câmpurilor text
                 fullname.ReadOnly = false;
                 username.ReadOnly = false;
                 email.ReadOnly = false;
                 phone.ReadOnly = false;
                 password.ReadOnly = false;
-                role.ReadOnly = false;
                 dob.ReadOnly = false;
+                description.ReadOnly = false;
+
 
                 // Modificăm textul și culoarea butonului
-                button2btnEdit.Text = "Save";
-                button2btnEdit.BackColor = Color.FromArgb(138, 132, 226);
+                btnEditProfil.Text = "Save";
+                btnEditProfil.BackColor = Color.FromArgb(138, 132, 226);
 
                 // Facem câmpul de parolă vizibil
                 password.UseSystemPasswordChar = false;
@@ -110,57 +96,21 @@ namespace Search_The_GP
                 password.ReadOnly = true;
                 role.ReadOnly = true;
                 dob.ReadOnly = true;
+                description.ReadOnly = true;
 
                 // Modificăm textul și culoarea butonului
-                button2btnEdit.Text = "Edit";
-                button2btnEdit.BackColor = button2btnEdit.BackColor = Color.FromArgb(114, 155, 121);
+                btnEditProfil.Text = "Edit";
+                btnEditProfil.BackColor = btnEditProfil.BackColor = Color.FromArgb(114, 155, 121);
 
                 // Facem câmpul de parolă invizibil
                 password.UseSystemPasswordChar = true;
             }
         }
-
-        //Patients
-        private void getPatients()
+        private void btnEditProfil_Click(object sender, EventArgs e)
         {
-            flowLayoutPanel1.Controls.Clear();
-            PatientList[] patientList = new PatientList[7];
-            for (int i = 0; i < patientList.Length; i++)
-            {
-                patientList[i] = new PatientList();
-                patientList[i].Patients = "Munteanu Alexandru";
-                patientList[i].Phone = "+40 738474815";
-                patientList[i].Email = "alexandru.munteanu6@student.usv.ro";
-
-
-                flowLayoutPanel1.Controls.Add(patientList[i]);
-            }
-
-            foreach (PatientList patient in patientList)
-            {
-                patient.readClicked += PatientList_ButtonClicked;
-            }
+            isEditMode = !isEditMode;
+            ToggleEditMode(isEditMode);
         }
-
-        private void PatientList_ButtonClicked(object sender, EventArgs e)
-        {
-            getInfoPatient();
-        }
-
-        private void getInfoPatient()
-        {
-
-            InfoPatient patientList = new InfoPatient();
-            
-                patientList = new InfoPatient();
-                patientList.FullName = $"Munteanu Alexandru Ioan (i)";
-                patientList.Phone = "+40 738474815";
-                patientList.Email = "alexandru.munteanu6@student.usv.ro";
-
-                infoPatient.Controls.Clear();
-                infoPatient.Controls.Add(patientList);
-        }
-
 
         //Doctors
         private void getDoctors()
@@ -189,14 +139,19 @@ namespace Search_The_GP
 
         private void getInfoDoctor()
         {
-            InfoDoctor doctorInfo = new InfoDoctor();
+            InfoDoctorForPatient doctorInfo = new InfoDoctorForPatient();
 
-            doctorInfo = new InfoDoctor();
+            doctorInfo = new InfoDoctorForPatient();
             doctorInfo.FullName = " Alexandru Munteanu Ioan (MAI)";
             doctorInfo.Phone = "+40 738474815";
 
             infoDoctor.Controls.Clear();
             infoDoctor.Controls.Add(doctorInfo);
+            doctorInfo.applyClicked += Apply_ButtonClicked;
+        }
+        private void Apply_ButtonClicked(object sender, EventArgs e)
+        {
+            MessageBox.Show("Applied", "Titlu Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -207,52 +162,45 @@ namespace Search_The_GP
             flowLayoutPanel3.Controls.Clear();
             flowLayoutPanel4.Controls.Clear();
 
-            Request[] requests = new Request[15];
-            for (int i = 0; i < requests.Length/2; i++)
+            RequestsForPatient[] requests = new RequestsForPatient[5];
+            for (int i = 0; i < requests.Length; i = i + 2)
             {
-                requests[i] = new Request();
-                requests[i].Doctor = "Munteanu Alexandru "+ i;
-                requests[i].Patient = "Ion Popescu " + i;
-                requests[i].Status = "Rejected";
+                requests[i] = new RequestsForPatient();
+                requests[i].Doctor = "Munteanu Alexandru " + i;
+
+                int randomIndex = random.Next(0, 3);
+                requests[i].Status = statuses[randomIndex];
+
                 requests[i].StatusColor();
 
                 flowLayoutPanel3.Controls.Add(requests[i]);
             }
 
-            for(int i = requests.Length/2; i <  requests.Length -1;i++)
+            for (int i = 1; i < requests.Length; i = i + 2)
             {
-                requests[i] = new Request();
+                requests[i] = new RequestsForPatient();
                 requests[i].Doctor = "Munteanu Alexandru " + (i);
-                requests[i].Patient = "Ion Popescu " + (i);
-                requests[i].Status = "Accepted";
+
+                int randomIndex = random.Next(0, 3);
+                requests[i].Status = statuses[randomIndex];
+
                 requests[i].StatusColor();
 
                 flowLayoutPanel4.Controls.Add(requests[i]);
             }
 
-            requests[requests.Length-1] = new Request();
-            requests[requests.Length-1].Doctor = "Munteanu Alexandru " + (requests.Length - 1);
-            requests[requests.Length - 1].Patient = "Ion Popescu " + (requests.Length - 1);
-            requests[requests.Length - 1].Status = "Pending";
-            requests[requests.Length - 1].StatusColor();
-
-            flowLayoutPanel4.Controls.Add(requests[requests.Length - 1]);
-
-            foreach (Request request in requests)
+            foreach (RequestsForPatient request in requests)
             {
-                request.editClicked += Request_ButtonEditClicked;
+
                 request.deleteClicked += Request_ButtonDeleteClicked;
 
             }
         }
-        private void Request_ButtonEditClicked(object sender, EventArgs e)
-        {
-            MessageBox.Show("Edit", "Titlu Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void Request_ButtonDeleteClicked(object sender, EventArgs e)
         {
             MessageBox.Show("Delete", "Titlu Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+       
     }
 }
