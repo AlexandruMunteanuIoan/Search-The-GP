@@ -15,3 +15,9 @@ D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.InfoPatient.re
 D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.DoctorList.resources
 D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.InfoDoctor.resources
 D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.Request.resources
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.Form4.resources
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.InfoDoctorForPatient.resources
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.RequestsForPatient.resources
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.Form5.resources
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.RequestsForDoctor.resources
+D:\BD-PROJECT\Search-The-GP\Search-The-GP\obj\Debug\Search_The_GP.InfoPatientForDoctor.resources
