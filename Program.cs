@@ -16,7 +16,7 @@ namespace Search_The_GP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form3());
+            Application.Run(new Form4());
         }
     }
 }
