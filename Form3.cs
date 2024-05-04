@@ -3,6 +3,7 @@ using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Documents;
+using System.Drawing.Text;
 
 namespace Search_The_GP
 {
@@ -22,10 +23,7 @@ namespace Search_The_GP
             contentPatients.Visible = false; 
             contentProfil.Visible = true;
             contentDoctors.Visible = false;
-
-            nrOfAdmin.ReadOnly = true;
-            nrOfDoctors.ReadOnly = true;
-            nrOfPatients.ReadOnly = true;
+            contentRequest.Visible = false;
 
             ToggleEditMode(false);
         }
@@ -41,6 +39,7 @@ namespace Search_The_GP
             contentPatients.Visible = false;
             contentProfil.Visible = true;
             contentDoctors.Visible = false;
+            contentRequest.Visible = false;
         }
 
         private void btnPatients_Click(object sender, EventArgs e)
@@ -49,6 +48,7 @@ namespace Search_The_GP
             contentPatients.Visible = true;
             contentProfil.Visible = false;
             contentDoctors.Visible = false;
+            contentRequest.Visible = false;
 
             getPatients();
         }
@@ -59,7 +59,22 @@ namespace Search_The_GP
             contentPatients.Visible = false;
             contentProfil.Visible = false;
             contentDoctors.Visible = true;
+            contentRequest.Visible = false;
+
+            getDoctors();
         }
+
+        private void btnRequests_Click(object sender, EventArgs e)
+        {
+            // Schimbăm vizibilitatea panourilor pentru a afișa lista de medici
+            contentPatients.Visible = false;
+            contentProfil.Visible = false;
+            contentDoctors.Visible = false;
+            contentRequest.Visible = true;
+
+            getRequests();
+        }
+
         private void fullname_TextChanged(object sender, EventArgs e)
         {
 
@@ -147,7 +162,8 @@ namespace Search_The_GP
         //Patients
         private void getPatients()
         {
-            PatientList[] patientList = new PatientList[20];
+            flowLayoutPanel1.Controls.Clear();
+            PatientList[] patientList = new PatientList[7];
             for (int i = 0; i < patientList.Length; i++)
             {
                 patientList[i] = new PatientList();
@@ -157,7 +173,6 @@ namespace Search_The_GP
 
 
                 flowLayoutPanel1.Controls.Add(patientList[i]);
-
             }
 
             foreach (PatientList patient in patientList)
@@ -168,8 +183,115 @@ namespace Search_The_GP
 
         private void PatientList_ButtonClicked(object sender, EventArgs e)
         {
-            // Afișați mesajul atunci când butonul este apăsat
-            MessageBox.Show("Button clicked in PatientList UserControl!");
+            getInfoPatient();
+        }
+
+        private void getInfoPatient()
+        {
+
+            InfoPatient patientList = new InfoPatient();
+            
+                patientList = new InfoPatient();
+                patientList.FullName = $"Munteanu Alexandru Ioan (i)";
+                patientList.Phone = "+40 738474815";
+                patientList.Email = "alexandru.munteanu6@student.usv.ro";
+
+                infoPatient.Controls.Clear();
+                infoPatient.Controls.Add(patientList);
+        }
+
+
+        //Doctors
+        private void getDoctors()
+        {
+            flowLayoutPanel2.Controls.Clear();
+            DoctorList[] doctorsList = new DoctorList[7];
+            for (int i = 0; i < doctorsList.Length; i++)
+            {
+                doctorsList[i] = new DoctorList();
+                doctorsList[i].Doctor = $"Munteanu Alexandru (i)";
+                doctorsList[i].Phone = "+40 738474815";
+
+                flowLayoutPanel2.Controls.Add(doctorsList[i]);
+            }
+
+            foreach (DoctorList doctor in doctorsList)
+            {
+                doctor.readClicked += DoctorList_ButtonClicked;
+            }
+        }
+
+        private void DoctorList_ButtonClicked(object sender, EventArgs e)
+        {
+            getInfoDoctor();
+        }
+
+        private void getInfoDoctor()
+        {
+            InfoDoctor doctorInfo = new InfoDoctor();
+
+            doctorInfo = new InfoDoctor();
+            doctorInfo.FullName = " Alexandru Munteanu Ioan (MAI)";
+            doctorInfo.Phone = "+40 738474815";
+
+            infoDoctor.Controls.Clear();
+            infoDoctor.Controls.Add(doctorInfo);
+        }
+
+
+        //Requests
+        private void getRequests()
+        {
+            flowLayoutPanel3.RightToLeft = RightToLeft.Yes;
+            flowLayoutPanel3.Controls.Clear();
+            flowLayoutPanel4.Controls.Clear();
+
+            Request[] requests = new Request[15];
+            for (int i = 0; i < requests.Length/2; i++)
+            {
+                requests[i] = new Request();
+                requests[i].Doctor = "Munteanu Alexandru "+ i;
+                requests[i].Patient = "Ion Popescu " + i;
+                requests[i].Status = "Rejected";
+                requests[i].StatusColor();
+
+                flowLayoutPanel3.Controls.Add(requests[i]);
+            }
+
+            for(int i = requests.Length/2; i <  requests.Length -1;i++)
+            {
+                requests[i] = new Request();
+                requests[i].Doctor = "Munteanu Alexandru " + (i);
+                requests[i].Patient = "Ion Popescu " + (i);
+                requests[i].Status = "Accepted";
+                requests[i].StatusColor();
+
+                flowLayoutPanel4.Controls.Add(requests[i]);
+            }
+
+            requests[requests.Length-1] = new Request();
+            requests[requests.Length-1].Doctor = "Munteanu Alexandru " + (requests.Length - 1);
+            requests[requests.Length - 1].Patient = "Ion Popescu " + (requests.Length - 1);
+            requests[requests.Length - 1].Status = "Pending";
+            requests[requests.Length - 1].StatusColor();
+
+            flowLayoutPanel4.Controls.Add(requests[requests.Length - 1]);
+
+            foreach (Request request in requests)
+            {
+                request.editClicked += Request_ButtonEditClicked;
+                request.deleteClicked += Request_ButtonDeleteClicked;
+
+            }
+        }
+        private void Request_ButtonEditClicked(object sender, EventArgs e)
+        {
+            MessageBox.Show("Edit", "Titlu Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void Request_ButtonDeleteClicked(object sender, EventArgs e)
+        {
+            MessageBox.Show("Delete", "Titlu Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

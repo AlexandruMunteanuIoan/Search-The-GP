@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Search_The_GP
 {
-    public partial class PatientList : UserControl
+    public partial class DoctorList : UserControl
     {
         public event EventHandler readClicked;
 
-        public PatientList()
+        public DoctorList()
         {
             InitializeComponent();
         }
@@ -23,8 +23,9 @@ namespace Search_The_GP
         private string _description;
         private string _email;
         private string _phone;
+        private string _adres;
 
-        public string Patients
+        public string Doctor
         {
             get { return _patients; }
             set { _patients = value; fullname.Text = value; }
@@ -46,12 +47,16 @@ namespace Search_The_GP
             get { return _phone; }
             set { _phone = value; phone.Text = value; }
         }
+        public string Adres
+        {
+            get { return _adres; }
+            set { _adres = value; adres.Text = value; }
+        }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        private void read_Click(object sender, EventArgs e)
         {
             readClicked?.Invoke(this, EventArgs.Empty);
         }
-
     }
 }
+

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Search_The_GP
 {
-    public partial class InfoPatient : UserControl
+    public partial class InfoDoctor : UserControl
     {
-        public InfoPatient()
+        public InfoDoctor()
         {
             InitializeComponent();
 
@@ -23,6 +23,7 @@ namespace Search_The_GP
             password.ReadOnly = true;
             role.ReadOnly = true;
             dob.ReadOnly = true;
+            adres.ReadOnly = true;
             description.ReadOnly = true;
         }
 
@@ -33,6 +34,7 @@ namespace Search_The_GP
         private string _phone;
         private string _role;
         private string _dob;
+        private string _adres;
         private string _description;
 
         public string FullName
@@ -74,7 +76,13 @@ namespace Search_The_GP
         public string DateOfBirth
         {
             get { return _dob; }
-            set { _dob = value; dob.Text = value;}
+            set { _dob = value; dob.Text = value; }
+        }
+
+        public string Adres
+        {
+            get { return _adres; }
+            set { _adres = value; adres.Text = value; }
         }
 
         public string Description
@@ -92,6 +100,7 @@ namespace Search_The_GP
             password.ReadOnly = false;
             role.ReadOnly = false;
             dob.ReadOnly = false;
+            adres.ReadOnly = false;
             description.ReadOnly = false;
         }
     }
