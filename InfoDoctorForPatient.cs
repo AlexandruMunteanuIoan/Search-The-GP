@@ -23,6 +23,7 @@ namespace Search_The_GP
             dob.ReadOnly = true;
             adres.ReadOnly = true;
             description.ReadOnly = true;
+            nrOfAvailableSeats.ReadOnly = true;
         }
 
         public event EventHandler applyClicked;
@@ -32,6 +33,7 @@ namespace Search_The_GP
         private string _dob;
         private string _adres;
         private string _description;
+        private string _nrOfAvailableSeats;
 
         public string FullName
         {
@@ -67,6 +69,12 @@ namespace Search_The_GP
         {
             get { return _description; }
             set { _description = value; description.Text = value; }
+        }
+
+        private string NrOfAvailableSeats
+        {
+            get { return _nrOfAvailableSeats; }
+            set { _nrOfAvailableSeats = value; nrOfAvailableSeats.Text = value; }
         }
 
         private void btnApply_Click(object sender, EventArgs e)

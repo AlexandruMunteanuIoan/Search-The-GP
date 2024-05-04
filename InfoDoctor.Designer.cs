@@ -49,6 +49,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.adres = new System.Windows.Forms.TextBox();
+            this.nrOfAvailableSeats = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // description
@@ -60,11 +62,11 @@
             this.description.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.description.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.description.ForeColor = System.Drawing.Color.Gray;
-            this.description.Location = new System.Drawing.Point(27, 375);
+            this.description.Location = new System.Drawing.Point(27, 412);
             this.description.Multiline = true;
             this.description.Name = "description";
             this.description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.description.Size = new System.Drawing.Size(626, 327);
+            this.description.Size = new System.Drawing.Size(626, 290);
             this.description.TabIndex = 76;
             this.description.Text = resources.GetString("description.Text");
             // 
@@ -73,7 +75,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.label8.Location = new System.Drawing.Point(22, 347);
+            this.label8.Location = new System.Drawing.Point(22, 389);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 20);
@@ -315,11 +317,39 @@
             this.adres.TabIndex = 78;
             this.adres.Text = "Suceava, str.Universitatii nr. 13";
             // 
+            // nrOfAvailableSeats
+            // 
+            this.nrOfAvailableSeats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.nrOfAvailableSeats.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nrOfAvailableSeats.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nrOfAvailableSeats.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.nrOfAvailableSeats.Location = new System.Drawing.Point(190, 342);
+            this.nrOfAvailableSeats.Margin = new System.Windows.Forms.Padding(2);
+            this.nrOfAvailableSeats.Name = "nrOfAvailableSeats";
+            this.nrOfAvailableSeats.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.nrOfAvailableSeats.Size = new System.Drawing.Size(443, 23);
+            this.nrOfAvailableSeats.TabIndex = 102;
+            this.nrOfAvailableSeats.Text = "4/25";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
+            this.label10.Location = new System.Drawing.Point(22, 347);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(139, 20);
+            this.label10.TabIndex = 101;
+            this.label10.Text = "Available Seats";
+            // 
             // InfoDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.Controls.Add(this.nrOfAvailableSeats);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.adres);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.description);
@@ -370,5 +400,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox adres;
+        private System.Windows.Forms.TextBox nrOfAvailableSeats;
+        private System.Windows.Forms.Label label10;
     }
 }
