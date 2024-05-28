@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Windows.Forms;
 
 namespace Search_The_GP
 {
@@ -19,6 +13,7 @@ namespace Search_The_GP
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
+
         public bool IsValidEmail(string email)
         {
             // Expresia regulată pentru validarea emailurilor
@@ -29,7 +24,7 @@ namespace Search_The_GP
 
         private bool IsValidPhoneNumber(string phoneNumber)
         {
-            string pattern = @"^\+40 \d{9}$";
+            string pattern = @"^\d{10}$";
             Regex regex = new Regex(pattern);
             return regex.IsMatch(phoneNumber);
         }
@@ -55,15 +50,6 @@ namespace Search_The_GP
             return username.Length >= 4;
         }
 
-        private bool IsValidDateOfBirth(string dateString)
-        {
-            string format = "dd-mm-yyyy";
-            if (DateTime.TryParseExact(dateString, format, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out _))
-                return true;
-            else
-                return false;
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -73,13 +59,7 @@ namespace Search_The_GP
         {
             Form1 form1 = new Form1();
             form1.Show();
-
             this.Hide();
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -96,13 +76,13 @@ namespace Search_The_GP
                 password.Focus();
                 return;
             }
-            if (string.IsNullOrEmpty(email.Text) || !IsValidEmail(email.Text) || email.Text =="example@gmail.com")
+            if (string.IsNullOrEmpty(email.Text) || !IsValidEmail(email.Text) || email.Text == "example@gmail.com")
             {
                 emailError.Visible = true;
                 email.Focus();
                 return;
             }
-            if (phone.Text == "+40 712345678" || !IsValidPhoneNumber(phone.Text))
+            if (phone.Text == "0712345678" || !IsValidPhoneNumber(phone.Text))
             {
                 phoneError.Visible = true;
                 phone.Focus();
@@ -120,17 +100,88 @@ namespace Search_The_GP
                 lname.Focus();
                 return;
             }
-            if( dateOfBirth.Text == "Ex: dd-mm-yyyy" || !IsValidDateOfBirth(dateOfBirth.Text))
+            if (typeSelect.SelectedItem == null || typeSelect.SelectedItem.ToString() == "Select one")
+            {
+                typeError.Visible = true;
+                typeSelect.Focus();
+                return;
+            }
+
+            DateTime dob = dateOfBirth.Value.Date;
+            DateTime currentDate = DateTime.Now;
+            DateTime maxDateOfBirth = currentDate.AddYears(-110);
+
+            if (dob > currentDate || dob < maxDateOfBirth)
             {
                 dobError.Visible = true;
                 dateOfBirth.Focus();
                 return;
             }
+
+
+            string userType = typeSelect.SelectedItem.ToString();
+
+            string connectionString = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=LOCALHOST)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=MORCL)));User Id=SYSTEM;Password=Morbius#070802;";
+
+            using (OracleConnection con = new OracleConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    Console.WriteLine("Connection opened successfully.");
+                    
+                        
+
+                    string insertQuery = "INSERT INTO Users (id_user, username, email, password, tip_utilizator, nume, prenume, numar_telefon, data_nasterii) " +
+                                         "VALUES (:21, :username, :email,:password, :typeSelect, :lname, :fname, :phone, :dateOfBirth)";
+
+                    using (OracleCommand cmd = new OracleCommand(insertQuery, con))
+                    {
+                        using (OracleDataReader reader = cmd.ExecuteReader()) 
+                        { 
+                            
+                            int userId = Convert.ToInt32(reader["id_user"]); 
+                            cmd.Parameters.Add(new OracleParameter("username", username.Text));
+                            cmd.Parameters.Add(new OracleParameter("password", password.Text));
+                            cmd.Parameters.Add(new OracleParameter("email", email.Text));
+                            cmd.Parameters.Add(new OracleParameter("phone", phone.Text));
+                            cmd.Parameters.Add(new OracleParameter("fname", fname.Text));
+                            cmd.Parameters.Add(new OracleParameter("lname", lname.Text));
+                            cmd.Parameters.Add(new OracleParameter("typeSelect", userType));
+                            cmd.Parameters.Add(new OracleParameter("dateOfBirth", dob));
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("User registered successfully.");
+                                if (userType == "pacient")
+                                {
+                                    Form4 form4 = new Form4(userId);
+                                    form4.Show();
+                                }
+                                else if (userType == "medic")
+                                {
+                                    Form5 form5 = new Form5(userId);
+                                    form5.Show();
+                                }
+                                this.Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to register user.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show("An error occurred: " + exp.Message);
+                }
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-
         }
 
         private void username_TextChanged(object sender, EventArgs e)
@@ -144,12 +195,10 @@ namespace Search_The_GP
                     return;
                 }
                 username.ForeColor = Color.White;
-
                 usernameEror.Visible = false;
             }
             catch
             {
-
             }
         }
 
@@ -183,30 +232,6 @@ namespace Search_The_GP
             lname.SelectAll();
         }
 
-        private void dateOfBirth_Click(object sender, EventArgs e)
-        {
-            dateOfBirth.SelectAll();
-        }
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dateOfBirth.Text == "")
-                {
-                    dateOfBirth.Text = "Ex: dd-mm-yyyy";
-                    dateOfBirth.ForeColor = Color.Gray;
-                    return;
-                }
-                dateOfBirth.ForeColor = Color.White;
-
-                dobError.Visible = false;
-            }
-            catch
-            {
-
-            }
-        }
-
         private void password_TextChanged(object sender, EventArgs e)
         {
             try
@@ -223,7 +248,6 @@ namespace Search_The_GP
             }
             catch
             {
-
             }
         }
 
@@ -242,7 +266,6 @@ namespace Search_The_GP
             }
             catch
             {
-
             }
         }
 
@@ -252,7 +275,7 @@ namespace Search_The_GP
             {
                 if (phone.Text == "")
                 {
-                    phone.Text = "+40 712345678";
+                    phone.Text = "0712345678";
                     phone.ForeColor = Color.Gray;
                     return;
                 }
@@ -261,13 +284,11 @@ namespace Search_The_GP
             }
             catch
             {
-
             }
         }
 
         private void panel9_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void fname_TextChanged(object sender, EventArgs e)
@@ -281,12 +302,10 @@ namespace Search_The_GP
                     return;
                 }
                 fname.ForeColor = Color.White;
-
                 fnameError.Visible = false;
             }
             catch
             {
-
             }
         }
 
@@ -305,10 +324,8 @@ namespace Search_The_GP
             }
             catch
             {
-
             }
         }
-       
 
         private void typeSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -328,13 +345,11 @@ namespace Search_The_GP
             }
             catch
             {
-               
             }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
     }
 }

@@ -561,9 +561,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(1388, 811);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.contentRequest);
             this.Controls.Add(this.contentProfil);
             this.Controls.Add(this.contentDoctors);
+            this.Controls.Add(this.contentRequest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form4";
             this.Text = "Form4";

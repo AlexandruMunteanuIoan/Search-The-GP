@@ -43,7 +43,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.dobError = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.dateOfBirth = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.emailError = new System.Windows.Forms.Label();
@@ -74,6 +73,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Login = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.dateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -111,7 +111,7 @@
             this.panel1.Controls.Add(this.Login);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(900, 569);
             this.panel1.TabIndex = 0;
@@ -124,7 +124,7 @@
             this.panel6.Controls.Add(this.pictureBox5);
             this.panel6.Controls.Add(this.label8);
             this.panel6.Location = new System.Drawing.Point(476, 347);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(390, 65);
             this.panel6.TabIndex = 18;
@@ -137,10 +137,10 @@
             this.typeSelect.ForeColor = System.Drawing.Color.Gray;
             this.typeSelect.FormattingEnabled = true;
             this.typeSelect.Items.AddRange(new object[] {
-            "Patient",
-            "Family Doctor"});
+            "pacient",
+            "medic"});
             this.typeSelect.Location = new System.Drawing.Point(125, 14);
-            this.typeSelect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.typeSelect.Margin = new System.Windows.Forms.Padding(2);
             this.typeSelect.Name = "typeSelect";
             this.typeSelect.Size = new System.Drawing.Size(258, 33);
             this.typeSelect.TabIndex = 4;
@@ -165,7 +165,7 @@
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
             this.pictureBox5.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(24, 24);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -192,7 +192,7 @@
             this.panel4.Controls.Add(this.phone);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(52, 347);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(390, 65);
             this.panel4.TabIndex = 14;
@@ -215,7 +215,7 @@
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
             this.pictureBox3.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(24, 24);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -229,7 +229,7 @@
             this.phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phone.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.phone.Location = new System.Drawing.Point(125, 14);
-            this.phone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.phone.Margin = new System.Windows.Forms.Padding(2);
             this.phone.Name = "phone";
             this.phone.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.phone.Size = new System.Drawing.Size(259, 23);
@@ -253,12 +253,12 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.dateOfBirth);
             this.panel7.Controls.Add(this.dobError);
             this.panel7.Controls.Add(this.pictureBox6);
-            this.panel7.Controls.Add(this.dateOfBirth);
             this.panel7.Controls.Add(this.label10);
             this.panel7.Location = new System.Drawing.Point(476, 277);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(390, 65);
             this.panel7.TabIndex = 17;
@@ -281,28 +281,12 @@
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
             this.pictureBox6.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(24, 24);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
-            // 
-            // dateOfBirth
-            // 
-            this.dateOfBirth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.dateOfBirth.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfBirth.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dateOfBirth.Location = new System.Drawing.Point(125, 14);
-            this.dateOfBirth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dateOfBirth.Name = "dateOfBirth";
-            this.dateOfBirth.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dateOfBirth.Size = new System.Drawing.Size(259, 23);
-            this.dateOfBirth.TabIndex = 1;
-            this.dateOfBirth.Text = "Ex: dd-mm-yyyy";
-            this.dateOfBirth.Click += new System.EventHandler(this.dateOfBirth_Click);
-            this.dateOfBirth.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label10
             // 
@@ -324,7 +308,7 @@
             this.panel5.Controls.Add(this.email);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Location = new System.Drawing.Point(52, 277);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(390, 65);
             this.panel5.TabIndex = 13;
@@ -348,7 +332,7 @@
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
             this.pictureBox4.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(24, 24);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -362,7 +346,7 @@
             this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.email.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.email.Location = new System.Drawing.Point(125, 14);
-            this.email.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.email.Margin = new System.Windows.Forms.Padding(2);
             this.email.Name = "email";
             this.email.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.email.Size = new System.Drawing.Size(259, 23);
@@ -391,7 +375,7 @@
             this.panel8.Controls.Add(this.lname);
             this.panel8.Controls.Add(this.label12);
             this.panel8.Location = new System.Drawing.Point(476, 207);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(390, 65);
             this.panel8.TabIndex = 16;
@@ -414,7 +398,7 @@
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
             this.pictureBox7.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.InitialImage")));
             this.pictureBox7.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(24, 24);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -428,7 +412,7 @@
             this.lname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lname.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.lname.Location = new System.Drawing.Point(125, 14);
-            this.lname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lname.Margin = new System.Windows.Forms.Padding(2);
             this.lname.Name = "lname";
             this.lname.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lname.Size = new System.Drawing.Size(259, 23);
@@ -470,7 +454,7 @@
             this.panel9.Controls.Add(this.fname);
             this.panel9.Controls.Add(this.label14);
             this.panel9.Location = new System.Drawing.Point(476, 137);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(390, 65);
             this.panel9.TabIndex = 15;
@@ -494,7 +478,7 @@
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
             this.pictureBox8.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(24, 24);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -508,7 +492,7 @@
             this.fname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fname.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.fname.Location = new System.Drawing.Point(125, 14);
-            this.fname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fname.Margin = new System.Windows.Forms.Padding(2);
             this.fname.Name = "fname";
             this.fname.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.fname.Size = new System.Drawing.Size(259, 23);
@@ -529,7 +513,6 @@
             this.label14.Size = new System.Drawing.Size(86, 20);
             this.label14.TabIndex = 0;
             this.label14.Text = "First Name";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // button2
             // 
@@ -541,7 +524,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Location = new System.Drawing.Point(389, 477);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 41);
             this.button2.TabIndex = 10;
@@ -556,7 +539,7 @@
             this.panel2.Controls.Add(this.password);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(52, 207);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(390, 65);
             this.panel2.TabIndex = 9;
@@ -579,7 +562,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
             this.pictureBox2.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 24);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -593,7 +576,7 @@
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.password.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.password.Location = new System.Drawing.Point(125, 14);
-            this.password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.password.Margin = new System.Windows.Forms.Padding(2);
             this.password.Name = "password";
             this.password.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.password.Size = new System.Drawing.Size(259, 23);
@@ -622,7 +605,7 @@
             this.panel3.Controls.Add(this.username);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(52, 137);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(390, 65);
             this.panel3.TabIndex = 8;
@@ -645,7 +628,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -659,7 +642,7 @@
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.username.Location = new System.Drawing.Point(125, 14);
-            this.username.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.username.Margin = new System.Windows.Forms.Padding(2);
             this.username.Name = "username";
             this.username.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.username.Size = new System.Drawing.Size(259, 23);
@@ -702,13 +685,20 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(875, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dateOfBirth
+            // 
+            this.dateOfBirth.Location = new System.Drawing.Point(127, 12);
+            this.dateOfBirth.Name = "dateOfBirth";
+            this.dateOfBirth.Size = new System.Drawing.Size(257, 20);
+            this.dateOfBirth.TabIndex = 4;
             // 
             // Form2
             // 
@@ -718,7 +708,7 @@
             this.ClientSize = new System.Drawing.Size(900, 569);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
             this.Text = " ";
             this.panel1.ResumeLayout(false);
@@ -797,6 +787,6 @@
         private System.Windows.Forms.TextBox fname;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox typeSelect;
-        private System.Windows.Forms.TextBox dateOfBirth;
+        private System.Windows.Forms.DateTimePicker dateOfBirth;
     }
 }

@@ -1,36 +1,75 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Oracle.ManagedDataAccess.Client;
 
 namespace Search_The_GP
 {
     public partial class Form4 : Form
     {
-
+        private int userId;
         private bool isEditMode = false;
         Random random = new Random();
         string[] statuses = { "Accepted", "Rejected", "Pending" };
 
+        private string connectionString = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=LOCALHOST)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=MORCL)));User Id=SYSTEM;Password=Morbius#070802;";
 
-        public Form4()
+        public Form4(int userId)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.userId = userId;
 
-            // Inițializăm vizibilitatea panourilor
             contentProfil.Visible = true;
             contentDoctors.Visible = false;
             contentRequest.Visible = false;
 
             ToggleEditMode(false);
+            LoadUserData();
         }
+
+        private void LoadUserData()
+        {
+            using (OracleConnection con = new OracleConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    string query = "SELECT u.*, p.descriere FROM Users u " +
+                                   "INNER JOIN Pacienti p ON u.id_user = p.id_user " +
+                                   "WHERE u.id_user = :userId";
+                    using (OracleCommand cmd = new OracleCommand(query, con))
+                    {
+                        cmd.Parameters.Add(":userId", OracleDbType.Int32).Value = userId;
+                        using (OracleDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string nume = reader["nume"].ToString();
+                                string prenume = reader["prenume"].ToString();
+                                fullname.Text = $"{nume} {prenume}";
+                                username.Text = reader["username"].ToString();
+                                email.Text = reader["email"].ToString();
+                                phone.Text = reader["numar_telefon"].ToString();
+                                password.Text = reader["password"].ToString();
+                                dob.Text = Convert.ToDateTime(reader["data_nasterii"]).ToShortDateString();
+                                description.Text = reader["descriere"].ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show("An error occurred: " + exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
         private void exit_Click(object sender, EventArgs e)
         {
@@ -39,7 +78,6 @@ namespace Search_The_GP
 
         private void btnProfil_Click(object sender, EventArgs e)
         {
-            // Schimbăm vizibilitatea panourilor pentru a afișa profilul
             contentProfil.Visible = true;
             contentDoctors.Visible = false;
             contentRequest.Visible = false;
@@ -47,7 +85,6 @@ namespace Search_The_GP
 
         private void btnDoctors_Click(object sender, EventArgs e)
         {
-            // Schimbăm vizibilitatea panourilor pentru a afișa lista de medici
             contentProfil.Visible = false;
             contentDoctors.Visible = true;
             contentRequest.Visible = false;
@@ -57,7 +94,6 @@ namespace Search_The_GP
 
         private void btnRequests_Click(object sender, EventArgs e)
         {
-            // Schimbăm vizibilitatea panourilor pentru a afișa lista de medici
             contentProfil.Visible = false;
             contentDoctors.Visible = false;
             contentRequest.Visible = true;
@@ -67,45 +103,28 @@ namespace Search_The_GP
 
         private void ToggleEditMode(bool editMode)
         {
+            fullname.ReadOnly = !editMode;
+            username.ReadOnly = !editMode;
+            email.ReadOnly = !editMode;
+            phone.ReadOnly = !editMode;
+            password.ReadOnly = !editMode;
+            dob.Enabled = editMode;
+            description.ReadOnly = !editMode;
+
             if (editMode)
             {
-                // Activați editarea câmpurilor text
-                fullname.ReadOnly = false;
-                username.ReadOnly = false;
-                email.ReadOnly = false;
-                phone.ReadOnly = false;
-                password.ReadOnly = false;
-                dob.ReadOnly = false;
-                description.ReadOnly = false;
-
-
-                // Modificăm textul și culoarea butonului
                 btnEditProfil.Text = "Save";
                 btnEditProfil.BackColor = Color.FromArgb(138, 132, 226);
-
-                // Facem câmpul de parolă vizibil
                 password.UseSystemPasswordChar = false;
             }
             else
             {
-                // Dezactivăm editarea câmpurilor text
-                fullname.ReadOnly = true;
-                username.ReadOnly = true;
-                email.ReadOnly = true;
-                phone.ReadOnly = true;
-                password.ReadOnly = true;
-                role.ReadOnly = true;
-                dob.ReadOnly = true;
-                description.ReadOnly = true;
-
-                // Modificăm textul și culoarea butonului
                 btnEditProfil.Text = "Edit";
-                btnEditProfil.BackColor = btnEditProfil.BackColor = Color.FromArgb(114, 155, 121);
-
-                // Facem câmpul de parolă invizibil
+                btnEditProfil.BackColor = Color.FromArgb(114, 155, 121);
                 password.UseSystemPasswordChar = true;
             }
         }
+
         private void btnEditProfil_Click(object sender, EventArgs e)
         {
             isEditMode = !isEditMode;
@@ -149,11 +168,11 @@ namespace Search_The_GP
             infoDoctor.Controls.Add(doctorInfo);
             doctorInfo.applyClicked += Apply_ButtonClicked;
         }
+
         private void Apply_ButtonClicked(object sender, EventArgs e)
         {
             MessageBox.Show("Applied", "Titlu Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
 
         //Requests
         private void getRequests()
@@ -196,11 +215,10 @@ namespace Search_The_GP
 
             }
         }
+
         private void Request_ButtonDeleteClicked(object sender, EventArgs e)
         {
             MessageBox.Show("Delete", "Titlu Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-       
     }
 }

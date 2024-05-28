@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,12 +18,15 @@ namespace Search_The_GP
         private bool isEditMode = false;
         Random random = new Random();
         string[] statuses = { "Accepted", "Rejected", "Pending" };
+        private int userId;
+        private string connectionString = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=LOCALHOST)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=MORCL)));User Id=SYSTEM;Password=Morbius#070802;";
 
 
-        public Form5()
+        public Form5(int userId)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.userId = userId;
 
             // Inițializăm vizibilitatea panourilor
             contentProfil.Visible = true;
@@ -30,6 +34,50 @@ namespace Search_The_GP
             contentRequest.Visible = false;
 
             ToggleEditMode(false);
+            LoadUserData();
+        }
+
+        private void LoadUserData()
+        {
+            using (OracleConnection con = new OracleConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    string query = "SELECT u.*, m.descriere, m.adresa_cabinet, m.nr_Locuri_Disponibile FROM Users u " +
+                                   "INNER JOIN Medici m ON u.id_user = m.id_user " +
+                                   "WHERE u.id_user = :userId";
+                    using (OracleCommand cmd = new OracleCommand(query, con))
+                    {
+                        cmd.Parameters.Add(":userId", OracleDbType.Int32).Value = userId;
+                        using (OracleDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string nume = reader["nume"].ToString();
+                                string prenume = reader["prenume"].ToString();
+                                fullname.Text = $"{nume} {prenume}";
+                                username.Text = reader["username"].ToString();
+                                email.Text = reader["email"].ToString();
+                                phone.Text = reader["numar_telefon"].ToString();
+                                password.Text = reader["password"].ToString();
+                                dob.Text = Convert.ToDateTime(reader["data_nasterii"]).ToShortDateString();
+                                description.Text = reader["descriere"].ToString();
+                                Adres.Text = reader["adresa_cabinet"].ToString();
+                                nrLocuriDisponibile.Text = reader["nr_Locuri_Disponibile"].ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show("An error occurred: " + exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void exit_Click(object sender, EventArgs e)

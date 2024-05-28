@@ -63,7 +63,6 @@
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(468, 572);
             this.LoginPanel.TabIndex = 0;
-            this.LoginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginPanel_Paint);
             // 
             // LoginForm
             // 
@@ -81,7 +80,6 @@
             this.LoginForm.Name = "LoginForm";
             this.LoginForm.Size = new System.Drawing.Size(465, 569);
             this.LoginForm.TabIndex = 0;
-            this.LoginForm.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginForm_Paint);
             // 
             // button2
             // 
@@ -165,7 +163,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // password
             // 
@@ -195,7 +192,6 @@
             this.label3.Size = new System.Drawing.Size(78, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Password";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel1
             // 
@@ -208,7 +204,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(390, 65);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // usernameEror
             // 
@@ -221,7 +216,6 @@
             this.usernameEror.TabIndex = 3;
             this.usernameEror.Text = "Username invalid";
             this.usernameEror.Visible = false;
-            this.usernameEror.Click += new System.EventHandler(this.usernameEror_Click);
             // 
             // pictureBox1
             // 
@@ -235,7 +229,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // username
             // 
@@ -265,7 +258,6 @@
             this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click_2);
             // 
             // Login
             // 
@@ -280,7 +272,6 @@
             this.Login.TabIndex = 0;
             this.Login.Text = "LOGIN";
             this.Login.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Login.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
@@ -291,7 +282,6 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.LoginPanel.ResumeLayout(false);
             this.LoginForm.ResumeLayout(false);
             this.LoginForm.PerformLayout();

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 
 namespace Search_The_GP
 {
@@ -19,57 +20,6 @@ namespace Search_The_GP
             InitializeComponent();
 
             this.StartPosition = FormStartPosition.CenterScreen;
-        }
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LoginPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void LoginForm_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void username_TextChanged(object sender, EventArgs e)
@@ -137,20 +87,63 @@ namespace Search_The_GP
                 return;
             }
 
-            if (username.Text == "AlexandruMunteanu" && password.Text == "AdminMAI")
-            {
-                
-                Form3 form3 = new Form3();
-                form3.Show();
+            string connectionString = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=LOCALHOST)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=MORCL)));User Id=SYSTEM;Password=Morbius#070802;";
 
-                this.Hide();
+            using (OracleConnection con = new OracleConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    Console.WriteLine("Connection opened successfully.");
+
+                    string query = $"SELECT * FROM users WHERE username='{username.Text}' AND password='{password.Text}'";
+
+                    using (OracleCommand cmd = new OracleCommand(query, con))
+                    {
+                        using (OracleDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string userType = reader["TIP_UTILIZATOR"].ToString();
+                                int userId = Convert.ToInt32(reader["id_user"]);
+
+                                if (userType == "admin")
+                                {
+                                    this.Hide();
+                                    Form3 form3 = new Form3(userId);
+                                    form3.Show();
+
+                                }
+                                else if (userType == "pacient")
+                                {
+                                    this.Hide();
+                                    Form4 form4 = new Form4(userId);
+                                    form4.Show();
+                                }
+                                else if (userType == "medic")
+                                {
+                                    this.Hide();
+                                    Form5 form5 = new Form5(userId);
+                                    form5.Show();
+                                }
+
+                                
+                            }
+                            else
+                            {
+                                passwordEror.Visible = true;
+                                usernameEror.Visible = true;
+                            }
+                        }
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show("An error occurred: " + exp.Message);
+                }
             }
         }
 
-        private void usernameEror_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
