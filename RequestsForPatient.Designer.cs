@@ -41,8 +41,7 @@
             this.status.AutoSize = true;
             this.status.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.status.Location = new System.Drawing.Point(693, 16);
-            this.status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.status.Location = new System.Drawing.Point(460, 13);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(76, 22);
             this.status.TabIndex = 83;
@@ -54,8 +53,7 @@
             this.dateOfRequest.AutoSize = true;
             this.dateOfRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateOfRequest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.dateOfRequest.Location = new System.Drawing.Point(267, 53);
-            this.dateOfRequest.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dateOfRequest.Location = new System.Drawing.Point(200, 43);
             this.dateOfRequest.Name = "dateOfRequest";
             this.dateOfRequest.Size = new System.Drawing.Size(102, 22);
             this.dateOfRequest.TabIndex = 82;
@@ -67,8 +65,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.label1.Location = new System.Drawing.Point(13, 49);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(10, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 25);
             this.label1.TabIndex = 81;
@@ -80,8 +77,7 @@
             this.lblDoctor.AutoSize = true;
             this.lblDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.lblDoctor.Location = new System.Drawing.Point(13, 12);
-            this.lblDoctor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDoctor.Location = new System.Drawing.Point(10, 10);
             this.lblDoctor.Name = "lblDoctor";
             this.lblDoctor.Size = new System.Drawing.Size(144, 25);
             this.lblDoctor.TabIndex = 79;
@@ -93,8 +89,7 @@
             this.fnDoctor.AutoSize = true;
             this.fnDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fnDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.fnDoctor.Location = new System.Drawing.Point(267, 16);
-            this.fnDoctor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fnDoctor.Location = new System.Drawing.Point(200, 13);
             this.fnDoctor.Name = "fnDoctor";
             this.fnDoctor.Size = new System.Drawing.Size(149, 22);
             this.fnDoctor.TabIndex = 77;
@@ -107,10 +102,10 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.btnDelete.Location = new System.Drawing.Point(733, 153);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Location = new System.Drawing.Point(550, 124);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(91, 30);
+            this.btnDelete.Size = new System.Drawing.Size(68, 24);
             this.btnDelete.TabIndex = 85;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -118,7 +113,7 @@
             // 
             // RequestsForPatient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(132)))), ((int)(((byte)(226)))));
             this.Controls.Add(this.btnDelete);
@@ -127,8 +122,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDoctor);
             this.Controls.Add(this.fnDoctor);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "RequestsForPatient";
-            this.Size = new System.Drawing.Size(827, 185);
+            this.Size = new System.Drawing.Size(620, 150);
             this.ResumeLayout(false);
             this.PerformLayout();
 

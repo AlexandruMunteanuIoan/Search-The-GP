@@ -44,10 +44,10 @@
             this.btnReject.FlatAppearance.BorderSize = 0;
             this.btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.btnReject.Location = new System.Drawing.Point(728, 148);
-            this.btnReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReject.Location = new System.Drawing.Point(546, 120);
+            this.btnReject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReject.Name = "btnReject";
-            this.btnReject.Size = new System.Drawing.Size(91, 30);
+            this.btnReject.Size = new System.Drawing.Size(68, 24);
             this.btnReject.TabIndex = 93;
             this.btnReject.Text = "Reject";
             this.btnReject.UseVisualStyleBackColor = false;
@@ -58,8 +58,7 @@
             this.status.AutoSize = true;
             this.status.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.status.Location = new System.Drawing.Point(688, 11);
-            this.status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.status.Location = new System.Drawing.Point(460, 9);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(76, 22);
             this.status.TabIndex = 92;
@@ -71,8 +70,7 @@
             this.dateOfRequest.AutoSize = true;
             this.dateOfRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateOfRequest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.dateOfRequest.Location = new System.Drawing.Point(262, 48);
-            this.dateOfRequest.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dateOfRequest.Location = new System.Drawing.Point(196, 39);
             this.dateOfRequest.Name = "dateOfRequest";
             this.dateOfRequest.Size = new System.Drawing.Size(102, 22);
             this.dateOfRequest.TabIndex = 91;
@@ -84,8 +82,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.label1.Location = new System.Drawing.Point(8, 44);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(6, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 25);
             this.label1.TabIndex = 90;
@@ -97,8 +94,7 @@
             this.lblPatient.AutoSize = true;
             this.lblPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.lblPatient.Location = new System.Drawing.Point(8, 7);
-            this.lblPatient.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPatient.Location = new System.Drawing.Point(6, 6);
             this.lblPatient.Name = "lblPatient";
             this.lblPatient.Size = new System.Drawing.Size(79, 25);
             this.lblPatient.TabIndex = 89;
@@ -110,8 +106,7 @@
             this.fnPatient.AutoSize = true;
             this.fnPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fnPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.fnPatient.Location = new System.Drawing.Point(262, 11);
-            this.fnPatient.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fnPatient.Location = new System.Drawing.Point(196, 9);
             this.fnPatient.Name = "fnPatient";
             this.fnPatient.Size = new System.Drawing.Size(152, 22);
             this.fnPatient.TabIndex = 87;
@@ -124,10 +119,10 @@
             this.btnAccept.FlatAppearance.BorderSize = 0;
             this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.btnAccept.Location = new System.Drawing.Point(622, 148);
-            this.btnAccept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAccept.Location = new System.Drawing.Point(466, 120);
+            this.btnAccept.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(91, 30);
+            this.btnAccept.Size = new System.Drawing.Size(68, 24);
             this.btnAccept.TabIndex = 94;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = false;
@@ -139,10 +134,10 @@
             this.btnInfo.FlatAppearance.BorderSize = 0;
             this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInfo.ForeColor = System.Drawing.Color.White;
-            this.btnInfo.Location = new System.Drawing.Point(13, 148);
-            this.btnInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInfo.Location = new System.Drawing.Point(10, 120);
+            this.btnInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(185, 30);
+            this.btnInfo.Size = new System.Drawing.Size(139, 24);
             this.btnInfo.TabIndex = 95;
             this.btnInfo.Text = "Information about patient";
             this.btnInfo.UseVisualStyleBackColor = false;
@@ -150,7 +145,7 @@
             // 
             // RequestsForDoctor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(132)))), ((int)(((byte)(226)))));
             this.Controls.Add(this.btnInfo);
@@ -161,8 +156,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPatient);
             this.Controls.Add(this.fnPatient);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "RequestsForDoctor";
-            this.Size = new System.Drawing.Size(827, 185);
+            this.Size = new System.Drawing.Size(620, 150);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,31 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Search_The_GP
 {
     public partial class InfoDoctor : UserControl
     {
+        public event EventHandler editClicked;
+        public event EventHandler deleteClicked;
+
         public InfoDoctor()
         {
             InitializeComponent();
 
-            fullname.ReadOnly = true;
-            username.ReadOnly = true;
-            email.ReadOnly = true;
-            phone.ReadOnly = true;
-            password.ReadOnly = true;
+            // Setăm toate câmpurile de editare ca fiind read-only sau editabile
+            fullname.ReadOnly = false;
+            username.ReadOnly = false;
+            email.ReadOnly = false;
+            phone.ReadOnly = false;
+            password.ReadOnly = false;
             role.ReadOnly = true;
             dob.ReadOnly = true;
-            adres.ReadOnly = true;
-            description.ReadOnly = true;
-            nrOfAvailableSeats.ReadOnly = true;
+            adres.ReadOnly = false;
+            description.ReadOnly = false;
+            nrOfAvailableSeats.ReadOnly = false;
+
+            // Adăugăm evenimente TextChanged pentru a prelua datele modificate
+            fullname.TextChanged += Fullname_TextChanged;
+            username.TextChanged += Username_TextChanged;
+            email.TextChanged += Email_TextChanged;
+            phone.TextChanged += Phone_TextChanged;
+            password.TextChanged += Password_TextChanged;
+            role.TextChanged += Role_TextChanged;
+            dob.TextChanged += Dob_TextChanged;
+            adres.TextChanged += Adres_TextChanged;
+            description.TextChanged += Description_TextChanged;
+            nrOfAvailableSeats.TextChanged += NrOfAvailableSeats_TextChanged;
         }
 
         private string _fullname;
@@ -38,6 +47,8 @@ namespace Search_The_GP
         private string _adres;
         private string _description;
         private string _nrOfAvailableSeats;
+        private int _idUser;
+        private int _idMedic;
 
         public string FullName
         {
@@ -92,25 +103,83 @@ namespace Search_The_GP
             get { return _description; }
             set { _description = value; description.Text = value; }
         }
-        private string NrOfAvailableSeats
+
+        public string NrOfAvailableSeats
         {
             get { return _nrOfAvailableSeats; }
             set { _nrOfAvailableSeats = value; nrOfAvailableSeats.Text = value; }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public int IdUser
         {
-            fullname.ReadOnly = false;
-            username.ReadOnly = false;
-            email.ReadOnly = false;
-            phone.ReadOnly = false;
-            password.ReadOnly = false;
-            role.ReadOnly = false;
-            dob.ReadOnly = false;
-            adres.ReadOnly = false;
-            description.ReadOnly = false;
-            nrOfAvailableSeats.ReadOnly = false;
+            get { return _idUser; }
+            set { _idUser = value; }
         }
 
+        public int IdMedic
+        {
+            get { return _idMedic; }
+            set { _idMedic = value; }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            editClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            deleteClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Fullname_TextChanged(object sender, EventArgs e)
+        {
+            _fullname = fullname.Text;
+        }
+
+        private void Username_TextChanged(object sender, EventArgs e)
+        {
+            _username = username.Text;
+        }
+
+        private void Email_TextChanged(object sender, EventArgs e)
+        {
+            _email = email.Text;
+        }
+
+        private void Phone_TextChanged(object sender, EventArgs e)
+        {
+            _phone = phone.Text;
+        }
+
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+            _password = password.Text;
+        }
+
+        private void Role_TextChanged(object sender, EventArgs e)
+        {
+            _role = role.Text;
+        }
+
+        private void Dob_TextChanged(object sender, EventArgs e)
+        {
+            _dob = dob.Text;
+        }
+
+        private void Adres_TextChanged(object sender, EventArgs e)
+        {
+            _adres = adres.Text;
+        }
+
+        private void Description_TextChanged(object sender, EventArgs e)
+        {
+            _description = description.Text;
+        }
+
+        private void NrOfAvailableSeats_TextChanged(object sender, EventArgs e)
+        {
+            _nrOfAvailableSeats = nrOfAvailableSeats.Text;
+        }
     }
 }

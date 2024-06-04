@@ -1,29 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Search_The_GP
 {
     public partial class InfoPatient : UserControl
     {
+        public event EventHandler editClicked;
+        public event EventHandler deleteClicked;
+
         public InfoPatient()
         {
             InitializeComponent();
 
-            fullname.ReadOnly = true;
-            username.ReadOnly = true;
-            email.ReadOnly = true;
-            phone.ReadOnly = true;
-            password.ReadOnly = true;
+            // Setăm toate câmpurile de editare ca fiind read-only sau editabile
+            fullname.ReadOnly = false;
+            username.ReadOnly = false;
+            email.ReadOnly = false;
+            phone.ReadOnly = false;
+            password.ReadOnly = false;
             role.ReadOnly = true;
             dob.ReadOnly = true;
-            description.ReadOnly = true;
+            description.ReadOnly = false;
+
+            // Adăugăm evenimente TextChanged pentru a prelua datele modificate
+            fullname.TextChanged += Fullname_TextChanged;
+            username.TextChanged += Username_TextChanged;
+            email.TextChanged += Email_TextChanged;
+            phone.TextChanged += Phone_TextChanged;
+            password.TextChanged += Password_TextChanged;
+            role.TextChanged += Role_TextChanged;
+            dob.TextChanged += Dob_TextChanged;
+            description.TextChanged += Description_TextChanged;
         }
 
         private string _fullname;
@@ -34,6 +41,8 @@ namespace Search_The_GP
         private string _role;
         private string _dob;
         private string _description;
+        private int _idUser;
+        private int _idPatient;
 
         public string FullName
         {
@@ -74,7 +83,7 @@ namespace Search_The_GP
         public string DateOfBirth
         {
             get { return _dob; }
-            set { _dob = value; dob.Text = value;}
+            set { _dob = value; dob.Text = value; }
         }
 
         public string Description
@@ -83,16 +92,67 @@ namespace Search_The_GP
             set { _description = value; description.Text = value; }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public int IdUser
         {
-            fullname.ReadOnly = false;
-            username.ReadOnly = false;
-            email.ReadOnly = false;
-            phone.ReadOnly = false;
-            password.ReadOnly = false;
-            role.ReadOnly = false;
-            dob.ReadOnly = false;
-            description.ReadOnly = false;
+            get { return _idUser; }
+            set { _idUser = value; }
+        }
+
+        public int IdPatient
+        {
+            get { return _idPatient; }
+            set { _idPatient = value; }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+            editClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            deleteClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Fullname_TextChanged(object sender, EventArgs e)
+        {
+            _fullname = fullname.Text;
+        }
+
+        private void Username_TextChanged(object sender, EventArgs e)
+        {
+            _username = username.Text;
+        }
+
+        private void Email_TextChanged(object sender, EventArgs e)
+        {
+            _email = email.Text;
+        }
+
+        private void Phone_TextChanged(object sender, EventArgs e)
+        {
+            _phone = phone.Text;
+        }
+
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+            _password = password.Text;
+        }
+
+        private void Role_TextChanged(object sender, EventArgs e)
+        {
+            _role = role.Text;
+        }
+
+        private void Dob_TextChanged(object sender, EventArgs e)
+        {
+            _dob = dob.Text;
+        }
+
+        private void Description_TextChanged(object sender, EventArgs e)
+        {
+            _description = description.Text;
         }
     }
 }

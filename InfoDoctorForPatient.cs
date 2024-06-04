@@ -34,6 +34,19 @@ namespace Search_The_GP
         private string _adres;
         private string _description;
         private string _nrOfAvailableSeats;
+        private int _idUser;
+        private int _idMedic;
+
+        public int IdUser
+        {
+            get { return _idUser; }
+            set { _idUser = value; }
+        }
+        public int IdMedic
+        {
+            get { return _idMedic; }
+            set { _idMedic = value; }
+        }
 
         public string FullName
         {
@@ -71,7 +84,7 @@ namespace Search_The_GP
             set { _description = value; description.Text = value; }
         }
 
-        private string NrOfAvailableSeats
+        public string NrOfAvailableSeats
         {
             get { return _nrOfAvailableSeats; }
             set { _nrOfAvailableSeats = value; nrOfAvailableSeats.Text = value; }

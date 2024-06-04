@@ -40,6 +40,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.contentDoctors = new System.Windows.Forms.Panel();
+            this.infoDoctor = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.contentRequest = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.contentProfil = new System.Windows.Forms.Panel();
             this.nrOfRequests = new System.Windows.Forms.TextBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -68,26 +74,20 @@
             this.contentPatients = new System.Windows.Forms.Panel();
             this.infoPatient = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.contentDoctors = new System.Windows.Forms.Panel();
-            this.infoDoctor = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.contentRequest = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.contentDoctors.SuspendLayout();
+            this.contentRequest.SuspendLayout();
             this.contentProfil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.contentPatients.SuspendLayout();
-            this.contentDoctors.SuspendLayout();
-            this.contentRequest.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -240,11 +240,65 @@
             this.panel1.Controls.Add(this.contentProfil);
             this.panel1.Controls.Add(this.contentPatients);
             this.panel1.Controls.Add(this.contentDoctors);
+            this.panel1.Controls.Add(this.contentRequest);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1388, 811);
             this.panel1.TabIndex = 0;
+            // 
+            // contentDoctors
+            // 
+            this.contentDoctors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.contentDoctors.Controls.Add(this.infoDoctor);
+            this.contentDoctors.Controls.Add(this.flowLayoutPanel2);
+            this.contentDoctors.Location = new System.Drawing.Point(0, 42);
+            this.contentDoctors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.contentDoctors.Name = "contentDoctors";
+            this.contentDoctors.Size = new System.Drawing.Size(1388, 769);
+            this.contentDoctors.TabIndex = 3;
+            // 
+            // infoDoctor
+            // 
+            this.infoDoctor.Location = new System.Drawing.Point(12, 12);
+            this.infoDoctor.Name = "infoDoctor";
+            this.infoDoctor.Size = new System.Drawing.Size(720, 745);
+            this.infoDoctor.TabIndex = 2;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(741, 12);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(643, 745);
+            this.flowLayoutPanel2.TabIndex = 1;
+            // 
+            // contentRequest
+            // 
+            this.contentRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.contentRequest.Controls.Add(this.flowLayoutPanel4);
+            this.contentRequest.Controls.Add(this.flowLayoutPanel3);
+            this.contentRequest.Location = new System.Drawing.Point(0, 42);
+            this.contentRequest.Name = "contentRequest";
+            this.contentRequest.Size = new System.Drawing.Size(1388, 769);
+            this.contentRequest.TabIndex = 6;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.AutoScroll = true;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(738, 3);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(650, 760);
+            this.flowLayoutPanel4.TabIndex = 1;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoScroll = true;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 5);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(650, 760);
+            this.flowLayoutPanel3.TabIndex = 0;
             // 
             // contentProfil
             // 
@@ -313,7 +367,7 @@
             this.nrOfPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.nrOfPatients.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nrOfPatients.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.nrOfPatients.Location = new System.Drawing.Point(720, 685);
+            this.nrOfPatients.Location = new System.Drawing.Point(468, 685);
             this.nrOfPatients.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nrOfPatients.Name = "nrOfPatients";
             this.nrOfPatients.ReadOnly = true;
@@ -329,7 +383,7 @@
             this.nrOfDoctors.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.nrOfDoctors.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nrOfDoctors.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.nrOfDoctors.Location = new System.Drawing.Point(468, 685);
+            this.nrOfDoctors.Location = new System.Drawing.Point(720, 685);
             this.nrOfDoctors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nrOfDoctors.Name = "nrOfDoctors";
             this.nrOfDoctors.ReadOnly = true;
@@ -613,65 +667,12 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(643, 745);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // contentDoctors
-            // 
-            this.contentDoctors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.contentDoctors.Controls.Add(this.infoDoctor);
-            this.contentDoctors.Controls.Add(this.flowLayoutPanel2);
-            this.contentDoctors.Location = new System.Drawing.Point(0, 42);
-            this.contentDoctors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.contentDoctors.Name = "contentDoctors";
-            this.contentDoctors.Size = new System.Drawing.Size(1388, 769);
-            this.contentDoctors.TabIndex = 3;
-            // 
-            // infoDoctor
-            // 
-            this.infoDoctor.Location = new System.Drawing.Point(12, 12);
-            this.infoDoctor.Name = "infoDoctor";
-            this.infoDoctor.Size = new System.Drawing.Size(720, 745);
-            this.infoDoctor.TabIndex = 2;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(741, 12);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(643, 745);
-            this.flowLayoutPanel2.TabIndex = 1;
-            // 
-            // contentRequest
-            // 
-            this.contentRequest.Controls.Add(this.flowLayoutPanel4);
-            this.contentRequest.Controls.Add(this.flowLayoutPanel3);
-            this.contentRequest.Location = new System.Drawing.Point(0, 42);
-            this.contentRequest.Name = "contentRequest";
-            this.contentRequest.Size = new System.Drawing.Size(1388, 769);
-            this.contentRequest.TabIndex = 5;
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.AutoScroll = true;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(738, 3);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(650, 760);
-            this.flowLayoutPanel4.TabIndex = 1;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.AutoScroll = true;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 5);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(650, 760);
-            this.flowLayoutPanel3.TabIndex = 0;
-            // 
             // Form3
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(1388, 811);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.contentRequest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form3";
@@ -683,6 +684,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.contentDoctors.ResumeLayout(false);
+            this.contentRequest.ResumeLayout(false);
             this.contentProfil.ResumeLayout(false);
             this.contentProfil.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -690,8 +693,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.contentPatients.ResumeLayout(false);
-            this.contentDoctors.ResumeLayout(false);
-            this.contentRequest.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

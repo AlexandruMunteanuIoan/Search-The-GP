@@ -34,9 +34,9 @@
             this.lblPatient = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateOfRequest = new System.Windows.Forms.Label();
-            this.status = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.status = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // fnDoctor
@@ -111,18 +111,6 @@
             this.dateOfRequest.Text = "07-06-2024";
             this.dateOfRequest.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // status
-            // 
-            this.status.AutoSize = true;
-            this.status.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.status.Location = new System.Drawing.Point(520, 13);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(76, 22);
-            this.status.TabIndex = 7;
-            this.status.Text = "Pending";
-            this.status.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(155)))), ((int)(((byte)(121)))));
@@ -153,14 +141,28 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // status
+            // 
+            this.status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(132)))), ((int)(((byte)(226)))));
+            this.status.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.status.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status.ForeColor = System.Drawing.Color.Black;
+            this.status.Location = new System.Drawing.Point(425, 10);
+            this.status.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.status.Name = "status";
+            this.status.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.status.Size = new System.Drawing.Size(192, 23);
+            this.status.TabIndex = 78;
+            this.status.Text = "Alexandru Munteanu";
+            // 
             // Request
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(132)))), ((int)(((byte)(226)))));
+            this.Controls.Add(this.status);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.status);
             this.Controls.Add(this.dateOfRequest);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPatient);
@@ -183,8 +185,8 @@
         private System.Windows.Forms.Label lblPatient;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label dateOfRequest;
-        private System.Windows.Forms.Label status;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox status;
     }
 }

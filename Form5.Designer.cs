@@ -44,6 +44,10 @@
             this.infoPatient = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.contentProfil = new System.Windows.Forms.Panel();
+            this.nrLocuriDisponibile = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Adres = new System.Windows.Forms.TextBox();
+            this.addresLable = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.description = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -66,10 +70,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.addresLable = new System.Windows.Forms.Label();
-            this.Adres = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.nrLocuriDisponibile = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -280,6 +280,56 @@
             this.contentProfil.Name = "contentProfil";
             this.contentProfil.Size = new System.Drawing.Size(1388, 769);
             this.contentProfil.TabIndex = 8;
+            // 
+            // nrLocuriDisponibile
+            // 
+            this.nrLocuriDisponibile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.nrLocuriDisponibile.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nrLocuriDisponibile.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nrLocuriDisponibile.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.nrLocuriDisponibile.Location = new System.Drawing.Point(282, 446);
+            this.nrLocuriDisponibile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nrLocuriDisponibile.Name = "nrLocuriDisponibile";
+            this.nrLocuriDisponibile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.nrLocuriDisponibile.Size = new System.Drawing.Size(451, 23);
+            this.nrLocuriDisponibile.TabIndex = 37;
+            this.nrLocuriDisponibile.Text = "2/15";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
+            this.label9.Location = new System.Drawing.Point(58, 447);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 20);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "Free Seats";
+            // 
+            // Adres
+            // 
+            this.Adres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.Adres.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Adres.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Adres.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.Adres.Location = new System.Drawing.Point(282, 343);
+            this.Adres.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Adres.Name = "Adres";
+            this.Adres.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Adres.Size = new System.Drawing.Size(451, 23);
+            this.Adres.TabIndex = 35;
+            this.Adres.Text = "str. Universitatii 13";
+            // 
+            // addresLable
+            // 
+            this.addresLable.AutoSize = true;
+            this.addresLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addresLable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
+            this.addresLable.Location = new System.Drawing.Point(58, 347);
+            this.addresLable.Name = "addresLable";
+            this.addresLable.Size = new System.Drawing.Size(78, 20);
+            this.addresLable.TabIndex = 34;
+            this.addresLable.Text = "Address";
             // 
             // pictureBox5
             // 
@@ -560,56 +610,6 @@
             this.label1.Size = new System.Drawing.Size(94, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Full Name";
-            // 
-            // addresLable
-            // 
-            this.addresLable.AutoSize = true;
-            this.addresLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addresLable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.addresLable.Location = new System.Drawing.Point(58, 347);
-            this.addresLable.Name = "addresLable";
-            this.addresLable.Size = new System.Drawing.Size(78, 20);
-            this.addresLable.TabIndex = 34;
-            this.addresLable.Text = "Address";
-            // 
-            // Adres
-            // 
-            this.Adres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.Adres.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Adres.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Adres.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.Adres.Location = new System.Drawing.Point(282, 343);
-            this.Adres.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Adres.Name = "Adres";
-            this.Adres.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Adres.Size = new System.Drawing.Size(451, 23);
-            this.Adres.TabIndex = 35;
-            this.Adres.Text = "str. Universitatii 13";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(232)))), ((int)(((byte)(238)))));
-            this.label9.Location = new System.Drawing.Point(58, 447);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 20);
-            this.label9.TabIndex = 36;
-            this.label9.Text = "Free Seats";
-            // 
-            // nrLocuriDisponibile
-            // 
-            this.nrLocuriDisponibile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.nrLocuriDisponibile.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nrLocuriDisponibile.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nrLocuriDisponibile.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.nrLocuriDisponibile.Location = new System.Drawing.Point(282, 446);
-            this.nrLocuriDisponibile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nrLocuriDisponibile.Name = "nrLocuriDisponibile";
-            this.nrLocuriDisponibile.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.nrLocuriDisponibile.Size = new System.Drawing.Size(451, 23);
-            this.nrLocuriDisponibile.TabIndex = 37;
-            this.nrLocuriDisponibile.Text = "2/15";
             // 
             // Form5
             // 

@@ -12,6 +12,9 @@ namespace Search_The_GP
 {
     public partial class InfoPatientForDoctor : UserControl
     {
+
+        public event EventHandler editClicked;
+
         public InfoPatientForDoctor()
         {
             InitializeComponent();
@@ -20,7 +23,9 @@ namespace Search_The_GP
             email.ReadOnly = true;
             phone.ReadOnly = true;
             dob.ReadOnly = true;
-            description.ReadOnly = true;
+            description.ReadOnly = false;
+
+            description.TextChanged += Description_TextChanged;
         }
 
         public event EventHandler applyClicked;
@@ -29,6 +34,19 @@ namespace Search_The_GP
         private string _phone;
         private string _dob;
         private string _description;
+        private int _idUser;
+        private int _idPatient;
+
+        public int IdUser
+        {
+            get { return _idUser; }
+            set { _idUser = value; }
+        }
+        public int IdPatient
+        {
+            get { return _idPatient; }
+            set { _idPatient = value; }
+        }
 
         public string FullName
         {
@@ -59,5 +77,16 @@ namespace Search_The_GP
             get { return _description; }
             set { _description = value; description.Text = value; }
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            editClicked?.Invoke(this, EventArgs.Empty);
+        }
+        private void Description_TextChanged(object sender, EventArgs e)
+        {
+            _description = description.Text;
+        }
+
+    
     }
 }

@@ -24,8 +24,21 @@ namespace Search_The_GP
         private string _patient;
         private string _dateOfRequest;
         private string _status;
+        private int _idCerere;
+        private int _idPatient;
 
-        public string Doctor
+        public int IdCerere
+        {
+            get { return _idCerere; }
+            set { _idCerere = value; }
+        }
+        public int IdPatient
+        {
+            get { return _idPatient; }
+            set { _idPatient = value; }
+        }
+
+        public string Patient
         {
             get { return _patient; }
             set { _patient = value; fnPatient.Text = value; }
@@ -45,20 +58,8 @@ namespace Search_The_GP
         }
         public void StatusColor()
         {
-            switch (status.Text)
-            {
-                case "Rejected":
-                    status.ForeColor = System.Drawing.Color.Red;
-                    break;
-                case "Accepted":
-                    status.ForeColor = System.Drawing.Color.DarkGreen;
-                    break;
-                case "Pending":
-                    status.ForeColor = System.Drawing.Color.Blue;
-                    break;
-                default:
-                    break;
-            }
+            status.Text = "Se proceseaza";
+            status.ForeColor = System.Drawing.Color.Blue;
         }
         private void btnInfo_Click(object sender, EventArgs e)
         {

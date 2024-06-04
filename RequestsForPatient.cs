@@ -23,6 +23,13 @@ namespace Search_The_GP
         private string _doctor;
         private string _dateOfRequest;
         private string _status;
+        private int _idCerere;
+
+        public int IdCerere
+        {
+            get { return _idCerere; }
+            set { _idCerere = value; }
+        }
 
         public string Doctor
         {
@@ -46,13 +53,16 @@ namespace Search_The_GP
         {
             switch (status.Text)
             {
-                case "Rejected":
+                case "respinsa":
+                    status.Text = "Respins";
                     status.ForeColor = System.Drawing.Color.Red;
                     break;
-                case "Accepted":
+                case "acceptata":
+                    status.Text = "Acceptat";
                     status.ForeColor = System.Drawing.Color.DarkGreen;
                     break;
-                case "Pending":
+                case "in_asteptare":
+                    status.Text = "Se proceseaza";
                     status.ForeColor = System.Drawing.Color.Blue;
                     break;
                 default:

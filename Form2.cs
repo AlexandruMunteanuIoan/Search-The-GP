@@ -1,5 +1,6 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -64,6 +65,7 @@ namespace Search_The_GP
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Validarea datelor
             if (username.Text == "Ex: IonPopescu" || !IsValidUsername(username.Text))
             {
                 usernameEror.Visible = true;
@@ -118,9 +120,7 @@ namespace Search_The_GP
                 return;
             }
 
-
             string userType = typeSelect.SelectedItem.ToString();
-
             string connectionString = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=LOCALHOST)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=MORCL)));User Id=SYSTEM;Password=Morbius#070802;";
 
             using (OracleConnection con = new OracleConnection(connectionString))
@@ -129,47 +129,82 @@ namespace Search_The_GP
                 {
                     con.Open();
                     Console.WriteLine("Connection opened successfully.");
-                    
-                        
 
-                    string insertQuery = "INSERT INTO Users (id_user, username, email, password, tip_utilizator, nume, prenume, numar_telefon, data_nasterii) " +
-                                         "VALUES (:21, :username, :email,:password, :typeSelect, :lname, :fname, :phone, :dateOfBirth)";
+                    string insertUserQuery = "INSERT INTO Users (id_user, username, email, password, tip_utilizator, nume, prenume, numar_telefon, data_nasterii) " +
+                                             "VALUES (seq_users.NEXTVAL, :username, :email, :password, :typeSelect, :lname, :fname, :phone, TO_DATE(:dateOfBirth, 'MM/DD/YYYY')) " +
+                                             "RETURNING id_user INTO :id_user";
 
-                    using (OracleCommand cmd = new OracleCommand(insertQuery, con))
+                    using (OracleCommand cmd = new OracleCommand(insertUserQuery, con))
                     {
-                        using (OracleDataReader reader = cmd.ExecuteReader()) 
-                        { 
-                            
-                            int userId = Convert.ToInt32(reader["id_user"]); 
-                            cmd.Parameters.Add(new OracleParameter("username", username.Text));
-                            cmd.Parameters.Add(new OracleParameter("password", password.Text));
-                            cmd.Parameters.Add(new OracleParameter("email", email.Text));
-                            cmd.Parameters.Add(new OracleParameter("phone", phone.Text));
-                            cmd.Parameters.Add(new OracleParameter("fname", fname.Text));
-                            cmd.Parameters.Add(new OracleParameter("lname", lname.Text));
-                            cmd.Parameters.Add(new OracleParameter("typeSelect", userType));
-                            cmd.Parameters.Add(new OracleParameter("dateOfBirth", dob));
+                        cmd.Parameters.Add(new OracleParameter("username", username.Text));
+                        cmd.Parameters.Add(new OracleParameter("password", password.Text));
+                        cmd.Parameters.Add(new OracleParameter("email", email.Text));
+                        cmd.Parameters.Add(new OracleParameter("phone", phone.Text));
+                        cmd.Parameters.Add(new OracleParameter("fname", fname.Text));
+                        cmd.Parameters.Add(new OracleParameter("lname", lname.Text));
+                        cmd.Parameters.Add(new OracleParameter("typeSelect", userType));
+                        cmd.Parameters.Add(new OracleParameter("dateOfBirth", dob.ToString("MM/dd/yyyy")));
+                        OracleParameter idUserParam = new OracleParameter("id_user", OracleDbType.Int32);
+                        idUserParam.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(idUserParam);
 
-                            int rowsAffected = cmd.ExecuteNonQuery();
-                            if (rowsAffected > 0)
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            int userId = int.Parse(idUserParam.Value.ToString());
+                            MessageBox.Show("User registered successfully.");
+
+                            string secondaryInsertQuery = "";
+
+                            if (userType == "pacient")
                             {
-                                MessageBox.Show("User registered successfully.");
-                                if (userType == "pacient")
-                                {
-                                    Form4 form4 = new Form4(userId);
-                                    form4.Show();
-                                }
-                                else if (userType == "medic")
-                                {
-                                    Form5 form5 = new Form5(userId);
-                                    form5.Show();
-                                }
-                                this.Hide();
+                                secondaryInsertQuery = "INSERT INTO Pacienti (id_pacient, id_user, descriere) VALUES (seq_pacienti.NEXTVAL, :id_user, :descriere)";
                             }
-                            else
+                            else if (userType == "medic")
                             {
-                                MessageBox.Show("Failed to register user.");
+                                secondaryInsertQuery = "INSERT INTO Medici (id_medic, id_user, descriere, adresa_cabinet, nr_Locuri_Disponibile) " +
+                                                       "VALUES (seq_medici.NEXTVAL, :id_user, :descriere, :adresa_cabinet, :nr_Locuri_Disponibile)";
                             }
+
+                            if (!string.IsNullOrEmpty(secondaryInsertQuery))
+                            {
+                                using (OracleCommand secondaryCmd = new OracleCommand(secondaryInsertQuery, con))
+                                {
+                                    secondaryCmd.Parameters.Add(new OracleParameter("id_user", userId));
+                                    secondaryCmd.Parameters.Add(new OracleParameter("descriere", ""));
+
+                                    if (userType == "medic")
+                                    {
+                                        secondaryCmd.Parameters.Add(new OracleParameter("adresa_cabinet", ""));
+                                        secondaryCmd.Parameters.Add(new OracleParameter("nr_Locuri_Disponibile", 0));
+                                    }
+
+                                    int secondaryRowsAffected = secondaryCmd.ExecuteNonQuery();
+                                    if (secondaryRowsAffected > 0)
+                                    {
+                                        MessageBox.Show($"{userType} registered successfully.");
+                                        if (userType == "pacient")
+                                        {
+                                            Form4 form4 = new Form4(userId);
+                                            form4.Show();
+                                        }
+                                        else if (userType == "medic")
+                                        {
+                                            Form5 form5 = new Form5(userId);
+                                            form5.Show();
+                                        }
+                                        this.Hide();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show($"Failed to register {userType}.");
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to register user.");
                         }
                     }
                 }

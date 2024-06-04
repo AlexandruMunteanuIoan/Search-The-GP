@@ -1,13 +1,5 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Search_The_GP
 {
@@ -19,13 +11,19 @@ namespace Search_The_GP
         public Request()
         {
             InitializeComponent();
-
         }
 
         private string _doctor;
         private string _patient;
         private string _dateOfRequest;
         private string _status;
+        private int _idCerere;
+
+        public int IdCerere
+        {
+            get { return _idCerere; }
+            set { _idCerere = value; }
+        }
 
         public string Patient
         {
@@ -48,19 +46,27 @@ namespace Search_The_GP
         {
             get { return _status; }
             set { _status = value; status.Text = value; }
-
         }
+
+        public string GetStatusText()
+        {
+            return status.Text.ToLower();
+        }
+
         public void StatusColor()
         {
-            switch (status.Text)
+            switch (status.Text.ToLower())
             {
-                case "Rejected":
+                case "respinsa":
+                    status.Text = "Respins";
                     status.ForeColor = System.Drawing.Color.Red;
                     break;
-                case "Accepted":
+                case "acceptata":
+                    status.Text = "Acceptat";
                     status.ForeColor = System.Drawing.Color.DarkGreen;
                     break;
-                case "Pending":
+                case "in_asteptare":
+                    status.Text = "Se Proceseaza";
                     status.ForeColor = System.Drawing.Color.Blue;
                     break;
                 default:
